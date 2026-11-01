@@ -1,0 +1,20 @@
+{
+  "project": "Cybernova ASM",
+  "authorized_domains": [
+    "example.com"
+  ],
+  "authorized_hosts": [],
+  "max_domains": 20,
+  "max_hosts": 10,
+  "ports": [
+    22,
+    80,
+    443,
+    8080,
+    8443,
+    12222,
+    13306
+  ],
+  "connect_timeout_seconds": 2,
+  "note": "Replace example.com only with domains you own or are explicitly authorized to assess."
+}

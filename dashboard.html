@@ -1,0 +1,23 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Cybernova ASM Report Viewer</title>
+<style>
+body{font:16px Arial;background:#101827;color:#e5e7eb;margin:32px}
+.card{background:#1f2937;padding:18px;border-radius:10px;margin:12px 0}
+button{padding:10px 16px;border:0;border-radius:6px;cursor:pointer}
+pre{white-space:pre-wrap;overflow-wrap:anywhere}
+</style></head><body>
+<h1>Cybernova – Attack-Surface Monitor</h1>
+<p>Load outputs/latest_report.json after running the authorised scan.</p>
+<input type="file" id="file" accept=".json"><div id="results"></div>
+<script>
+document.getElementById('file').addEventListener('change', async e=>{
+ const data=JSON.parse(await e.target.files[0].text());
+ document.getElementById('results').innerHTML='';
+ data.forEach(x=>{
+  const div=document.createElement('div'); div.className='card';
+  const pre=document.createElement('pre'); pre.textContent=JSON.stringify(x,null,2);
+  div.append(document.createTextNode(x.host+' | '+x.changes.join(', ')),pre);
+  document.getElementById('results').append(div);
+ });
+});
+</script></body></html>
